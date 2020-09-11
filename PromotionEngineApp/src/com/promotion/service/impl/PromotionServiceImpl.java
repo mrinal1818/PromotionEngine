@@ -18,6 +18,7 @@ public class PromotionServiceImpl implements PromotionService{
 	    int counterD = 0;
 	    int priceD = 15;
 	    
+	    int totalPrice = 0;
 	    boolean promotionApplied = false;
 
 	    for(Product product : products)
@@ -42,8 +43,6 @@ public class PromotionServiceImpl implements PromotionService{
 	                break;
 	        }
 	    }
-	    
-	    int totalPrice = 0;
 	    
 	    if(counterA == 3) {
 	    	
