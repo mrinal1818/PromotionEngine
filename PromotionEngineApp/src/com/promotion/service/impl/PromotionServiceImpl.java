@@ -44,7 +44,15 @@ public class PromotionServiceImpl implements PromotionService{
 	    int totalPriceB = (counterB / 2) * 45 + (counterB % 2 * priceB);
 	    int totalPriceC = (counterC * priceC);
 	    int totalPriceD = (counterD * priceD);
-	    return totalPriceA + totalPriceB + totalPriceC + totalPriceD;
+	    
+	    int totalPrice = 0;
+	    
+	    if(totalPriceC!=0 && totalPriceD!=0 && totalPriceA==0 && totalPriceB==0 && counterC==1 && counterD==1) {
+	    	totalPrice = totalPriceC+totalPriceD - 5;
+	    }else {
+	    	totalPrice = totalPriceA + totalPriceB + totalPriceC + totalPriceD;
+	    }
+	    return totalPrice;
 	}
 
 }
