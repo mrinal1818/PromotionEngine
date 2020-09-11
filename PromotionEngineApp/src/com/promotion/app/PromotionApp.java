@@ -1,5 +1,4 @@
 package com.promotion.app;
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -30,7 +29,7 @@ public class PromotionApp {
         int totalPrice = promotionService.getTotalPrice(productList);
         System.out.println("Total Price of the product : "+totalPrice); 
         
-		
+        scanner.close();
 	}
 	
 }
