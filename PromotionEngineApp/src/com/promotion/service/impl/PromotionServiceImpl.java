@@ -17,6 +17,8 @@ public class PromotionServiceImpl implements PromotionService{
 	    int priceC = 20;
 	    int counterD = 0;
 	    int priceD = 15;
+	    
+	    boolean promotionApplied = false;
 
 	    for(Product product : products)
 	    {
@@ -40,18 +42,39 @@ public class PromotionServiceImpl implements PromotionService{
 	                break;
 	        }
 	    }
-	    int totalPriceA = (counterA / 3) * 130 + (counterA % 3 * priceA);
-	    int totalPriceB = (counterB / 2) * 45 + (counterB % 2 * priceB);
-	    int totalPriceC = (counterC * priceC);
-	    int totalPriceD = (counterD * priceD);
 	    
 	    int totalPrice = 0;
 	    
-	    if(totalPriceC!=0 && totalPriceD!=0 && totalPriceA==0 && totalPriceB==0 && counterC==1 && counterD==1) {
-	    	totalPrice = totalPriceC+totalPriceD - 5;
+	    if(counterA == 3) {
+	    	
+	    	int totalPriceA = (counterA / 3) * 130 + (counterA % 3 * priceA);
+	 	    int totalPriceB = (counterB * priceB);
+	 	    int totalPriceC = (counterC * priceC);
+	 	    int totalPriceD = (counterD * priceD);
+	 	    totalPrice = totalPriceA + totalPriceB + totalPriceC + totalPriceD;
+	 	    promotionApplied = true;
+	    }else if((counterB == 2) && !promotionApplied) {
+	    	int totalPriceA = (counterA * priceA);
+		    int totalPriceB = (counterB / 2) * 45 + (counterB % 2 * priceB);
+		    int totalPriceC = (counterC * priceC);
+		    int totalPriceD = (counterD * priceD);
+		    totalPrice = totalPriceA + totalPriceB + totalPriceC + totalPriceD;
+		    promotionApplied = true;
+	    }else if(counterC==1 && counterD==1 && !promotionApplied) {
+	    	int totalPriceA = (counterA * priceA);
+		    int totalPriceB = (counterB * priceB);
+	    	int totalPriceC = (counterC * priceC);
+		    int totalPriceD = (counterD * priceD);
+		    totalPrice = totalPriceA + totalPriceB + ((totalPriceC+totalPriceD) - 5);
+		    promotionApplied = true;
 	    }else {
-	    	totalPrice = totalPriceA + totalPriceB + totalPriceC + totalPriceD;
+	    	int totalPriceA = (counterA * priceA);
+		    int totalPriceB = (counterB * priceB);
+		    int totalPriceC = (counterC * priceC);
+		    int totalPriceD = (counterD * priceD);
+		    totalPrice = totalPriceA + totalPriceB + totalPriceC + totalPriceD;
 	    }
+	  
 	    return totalPrice;
 	}
 
